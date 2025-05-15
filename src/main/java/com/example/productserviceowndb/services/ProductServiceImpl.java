@@ -1,5 +1,6 @@
 package com.example.productserviceowndb.services;
 
+import com.example.productserviceowndb.dtos.createProductDtos;
 import com.example.productserviceowndb.exceptions.ProductNotFoundException;
 import com.example.productserviceowndb.models.Product;
 import com.example.productserviceowndb.repositories.ProductRepository;
@@ -36,5 +37,23 @@ public class ProductServiceImpl implements ProductService {
         if(p.isEmpty())
             throw new ProductNotFoundException("product not found");
         return p.get();
+
+
 }
+
+    @Override
+    public Product updateProductById(Integer id, createProductDtos dto) throws ProductNotFoundException {
+
+             Optional<Product> p= productRepository.findById(id);
+             if(p.isEmpty())
+                 throw new ProductNotFoundException("product not found");
+             Product p1=p.get();
+             p1.setName(dto.getProductName());
+             p1.setDescription(dto.getProductDescription());
+             p1.setCategory(dto.getProductCategory());
+             p1=productRepository.save(p1);
+             return p1;
+    }
+
+
 }

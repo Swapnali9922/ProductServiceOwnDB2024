@@ -26,4 +26,13 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
+
+    //UpdateById api
+    @PutMapping("/products/{id}")
+    public Product updateProductById(@PathVariable("id") Integer id, @RequestBody createProductDtos dto) throws ProductNotFoundException{
+        //return productService.updateProductById(id,dto.getProductName(),dto.getProductDescription(),dto.getProductCategory());
+        return productService.updateProductById(id,dto);
+    }
+
+    //
 }
