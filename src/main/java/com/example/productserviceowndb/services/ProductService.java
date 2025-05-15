@@ -11,4 +11,5 @@ public interface ProductService {
       Product createProduct(String name,String description,String category);
       Product getProductById(Integer id) throws ProductNotFoundException;
       Product updateProductById(Integer id, createProductDtos dto) throws ProductNotFoundException;
+      String deleteProductById(Integer id) throws ProductNotFoundException;
 }

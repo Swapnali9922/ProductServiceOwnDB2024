@@ -55,5 +55,14 @@ public class ProductServiceImpl implements ProductService {
              return p1;
     }
 
+    @Override
+    public String deleteProductById(Integer id) throws ProductNotFoundException {
+        Optional<Product> p=productRepository.findById(id);
+        if(p.isEmpty())
+            return "product not found";
+        productRepository.deleteById(id);
+        return "product deleted";
+    }
+
 
 }

@@ -34,5 +34,9 @@ public class ProductController {
         return productService.updateProductById(id,dto);
     }
 
-    //
+    //delete api
+    @DeleteMapping("/products/{Id}")
+    public String deleteProductById(@PathVariable("Id") Integer id) throws ProductNotFoundException{
+        return productService.deleteProductById(id);
+    }
 }
